@@ -20,28 +20,6 @@ public class ModWizardAPI {
         client.player.playSound(event, volume, pitch);
     }
 
-    public static void displayTitle(String title, int fadeIn, int stay, int fadeOut) {
-        MinecraftClient client = MinecraftClient.getInstance();
-        if (client.player != null && client.inGameHud != null) {
-            client.inGameHud.setTitle(Text.literal(title));
-            client.inGameHud.setTitleTicks(fadeIn * 20, stay * 20, fadeOut * 20);
-        }
-    }
-
-    public static void displaySubtitle(String subtitle, int fadeIn, int stay, int fadeOut) {
-        MinecraftClient client = MinecraftClient.getInstance();
-        if (client.player != null && client.inGameHud != null) {
-            client.inGameHud.setSubtitle(Text.literal(subtitle));
-            client.inGameHud.setTitleTicks(fadeIn * 20, stay * 20, fadeOut * 20);
-        }
-    }
-
-    public static void displayActionbar(String message) {
-        MinecraftClient client = MinecraftClient.getInstance();
-        if (client.player != null) {
-            client.player.sendMessage(Text.literal(message), true);
-        }
-    }
 
     public static void sendMessage(String message, boolean sendGlobally) {
         MinecraftClient client = MinecraftClient.getInstance();
@@ -54,41 +32,10 @@ public class ModWizardAPI {
     }
 
 
-    public static double getPlayerX() {
-        return MinecraftClient.getInstance().player.getX();
-    }
-
-    public static double getPlayerY() {
-        return MinecraftClient.getInstance().player.getY();
-    }
-
-    public static double getPlayerZ() {
-        return MinecraftClient.getInstance().player.getZ();
-    }
-
-    public static float getPlayerRotation(boolean yaw) {
-        return yaw ? MinecraftClient.getInstance().player.lastYaw : MinecraftClient.getInstance().player.lastPitch;
-    }
-
-    public static int getPlayerXP() {
-        return MinecraftClient.getInstance().player.experienceLevel;
-    }
-
-    public static String getPlayerUsername() {
-        return MinecraftClient.getInstance().player.getDisplayName().getString();
-    }
-
-    public static String getPlayerUUID() {
-        return MinecraftClient.getInstance().player.getUuid().toString();
-    }
-
-    public static String getPlayerGameMode () {
-        return MinecraftClient.getInstance().player.getGameMode().getId();
-    }
-
     public static String playerClipboard (String text, String method) {
         if (method == "copy") {
             MinecraftClient.getInstance().keyboard.setClipboard(text);
+            System.out.println("Copied" + text + "to clipboard");
             return text;
         } else if (method == "get") {
             return MinecraftClient.getInstance().keyboard.getClipboard();
@@ -97,7 +44,4 @@ public class ModWizardAPI {
         }
     }
 
-    public static boolean dropHeldItem (boolean entireStack) {
-        return MinecraftClient.getInstance().player.dropSelectedItem(entireStack);
-    }
 }
