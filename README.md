@@ -1,4 +1,5 @@
 # Simple-Calculator
+[Modrinth Download](https://modrinth.com/mod/simple-calculator)
 ## Features & Usage
 Simple Calculator is a Simple mod which adds the feature to do equations.
 You can use the mod by typing `/calc <equation>`. 
